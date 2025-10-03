@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+:root {
+    --primary-red: #ED1C24;
+    --secondary-blue: #2E3092;
+}
+
+ 
+
+.wrapper {
+  max-width: 1280px; /* container default max-width (varies with breakpoints) */
+  margin-left: auto; /* mx-auto */
+  margin-right: auto;
+  padding-left: 0.25rem; /* px-1 */
+  padding-right: 0.25rem;
+}
+
+@media (min-width: 640px) { /* sm breakpoint */
+  .wrapper {
+    padding-left: 0.5rem; /* sm:px-2 */
+    padding-right: 0.5rem;
+  }
+}
+
+
+
+/* for 3D perspective + flip */
+.perspective {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+
+ 
