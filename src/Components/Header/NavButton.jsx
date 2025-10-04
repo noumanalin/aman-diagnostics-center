@@ -6,7 +6,7 @@ const NavButton = ({ children, href="/" }) => {
     <Link to={href}
       className="
         relative group inline-flex items-center justify-center
-        px-1 md:px-8 md:py-3 rounded-md font-semibold text-white text-base
+        px-3 py-2 md:px-8 md:py-3 rounded-md font-semibold text-white text-base
         transition-all duration-300 ease-in-out
         bg-gradient-to-r from-[var(--primary-red)] to-[var(--secondary-blue)]
         hover:shadow-[0_0_12px_var(--primary-red),0_0_12px_var(--color-secondary)] 

@@ -1,37 +1,74 @@
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { locations } from "./locations";
 
 
 export const navbarLinks = [
-    { title: "home", href: '/' },
-    {
-        title: "about us", href: "/about-us", dropDown: [
-            { title: "who we are", href: "/about-us" },
-            { title: "our mission & vision", href: '/about-us' },
-            { title: "Key management", href: '/about-us' },
-            { title: "our team", href: '/about-us' }
-        ]
-    },
-    {
-        title: "services", href: "/services", dropDown: [
-            { title: "laboratory services", href: "/services12" },
-            { title: "Imaging services", href: "/services1" },
-            { title: "cardia services", href: "/services2" },
-            { title: "respiratory services", href: "/services3" },
-            { title: "bone health services", href: "/services4" },
-            { title: "women health services", href: "/services5" },
-            { title: "dental services", href: "/services6" },
-            { title: "Neuro services", href: "/services7" },
-            { title: "covid-19 diagonstics", href: "/services8", dropDown: [
-                    { title: "covid-19 testing", href: "/services9" },
-                    { title: "covid-19 spike2 antibody test", href: "/services0" }
-            ]},
-            {title:"all services", href:"/services11"}
-        ]
-    },
-    {title:"location", href:"/location"},
-    { title: 'jobs', href: "/jobs" },
-    { title: 'contact us', href: "/contact-us" }
-]
+  { title: "home", href: "/" },
+  {
+    title: "about us",
+    href: "/about-us",
+    dropDown: [
+      { title: "who we are", href: "/about-us#who-we-are" },
+      { title: "our mission & vision", href: "/about-us#mission-vision" },
+      { title: "key management", href: "/about-us#key-management" },
+      { title: "our team", href: "/about-us#team" },
+    ],
+  },
+  {
+    title: "services",
+    href: "/services",
+    dropDown: [
+      { title: "laboratory services", href: "/services/laboratory" },
+      { title: "imaging services", href: "/services/imaging" },
+      { title: "cardia services", href: "/services/cardiac" },
+      { title: "respiratory services", href: "/services/respiratory" },
+      { title: "bone health services", href: "/services/bone-health" },
+      { title: "women health services", href: "/services/women-health" },
+      { title: "dental services", href: "/services/dental" },
+      { title: "neuro services", href: "/services/neuro" },
+      {
+        title: "covid-19 diagnostics",
+        href: "/services/covid",
+        dropDown: [
+          { title: "covid-19 testing", href: "/services/covid/testing" },
+          {
+            title: "covid-19 spike2 antibody test",
+            href: "/services/covid/spike2-antibody",
+          },
+        ],
+      },
+      { title: "all services", href: "/services/all" },
+    ],
+  },
+  {
+    title: "locations",
+    href: "/locations",
+    dropDown: [
+      {
+        title: "Islamabad",
+        href: "/location/islamabad",
+        dropDown: locations.Islamabad.branches.map((b) => ({
+          title: b.name,
+          href: b.href,
+        })),
+      },
+      {
+        title: "Lahore",
+        href: "/location/lahore",
+        dropDown: locations.Lahore.branches.map((b) => ({
+          title: b.name,
+          href: b.href,
+        })),
+      },
+      { title: "Rawalpindi", href: "/location/rawalpindi" },
+      { title: "Chakwal", href: "/location/chakwal" },
+      { title: "Charsadda", href: "/location/charsadda" },
+      { title: "Bannu", href: "/location/bannu" },
+    ],
+  },
+  { title: "jobs", href: "/jobs" },
+  { title: "contact us", href: "/contact-us" },
+];
 
 
 

@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
@@ -50,9 +50,29 @@ const MobileMenu = ({ isOpen, setIsOpen, links }) => {
   );
 };
 
-// Recursive dropdown item
+// ✅ Helper to check if a parent or nested link is active
+const useIsParentActive = (item) => {
+  const location = useLocation();
+  const fullPath = location.pathname + location.search;
+
+  if (item.href === fullPath) return true;
+
+  if (item.dropDown) {
+    return item.dropDown.some(
+      (child) =>
+        child.href === fullPath ||
+        (child.dropDown &&
+          child.dropDown.some((sub) => sub.href === fullPath))
+    );
+  }
+
+  return false;
+};
+
+// ✅ Recursive dropdown item
 const MobileDropdownItem = ({ item, depth, setIsOpen }) => {
   const [isOpen, setLocalOpen] = useState(false);
+  const active = useIsParentActive(item);
 
   return (
     <div className="flex flex-col">
@@ -63,14 +83,10 @@ const MobileDropdownItem = ({ item, depth, setIsOpen }) => {
       >
         <NavLink
           to={item.href}
-          className={({ isActive }) =>
-            `capitalize font-medium transition-colors ${
-              isActive
-                ? "text-blue-600"
-                : "text-gray-700 hover:text-blue-500"
-            }`
-          }
           onClick={() => setIsOpen(false)}
+          className={`capitalize font-medium transition-colors ${
+            active ? "text-blue-600" : "text-gray-700 hover:text-blue-500"
+          }`}
         >
           {item.title}
         </NavLink>
@@ -80,7 +96,7 @@ const MobileDropdownItem = ({ item, depth, setIsOpen }) => {
             size={16}
             className={`transition-transform ${
               isOpen ? "rotate-180" : ""
-            }`}
+            } ${active ? "text-blue-600" : "text-gray-600"}`}
           />
         )}
       </div>
